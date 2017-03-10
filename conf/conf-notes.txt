@@ -1,2 +1,2 @@
 Common targets are:
-    neo-console-image
+    omega-image
