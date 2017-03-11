@@ -21,5 +21,8 @@ SRC_URI[md5sum] = "ed01fa8c30342def9712769762ca55ea"
 SRC_URI[sha256sum] = "6ca06bb5faf5f83600d7388bb623dae41df2a257de85ad5d1792e03302bc3543"
 
 SRC_URI = "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${PV}.tar.xz \
-           file://defconfig \
-           "
+	file://defconfig \
+	file://AP6212.cfg \
+	file://0001-add-audio-sunxi-h3.patch \
+	file://0002-add-ap6212-h3.patch \
+	"
