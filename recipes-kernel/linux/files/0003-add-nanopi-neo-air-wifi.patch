@@ -1,9 +1,9 @@
---- a/arch/arm/boot/dts/sun8i-h3-nanopi-neo.dts
-+++ b/arch/arm/boot/dts/sun8i-h3-nanopi-neo.dts
-@@ -45,6 +45,13 @@
+--- a/arch/arm/boot/dts/sun8i-h3-nanopi-neo-air.dts
++++ b/arch/arm/boot/dts/sun8i-h3-nanopi-neo-air.dts
+@@ -46,6 +46,13 @@
  / {
- 	model = "FriendlyARM NanoPi NEO";
- 	compatible = "friendlyarm,nanopi-neo", "allwinner,sun8i-h3";
+ 	model = "FriendlyARM NanoPi NEO Air";
+ 	compatible = "friendlyarm,nanopi-neo-air", "allwinner,sun8i-h3";
 +
 +	wifi_pwrseq: wifi_pwrseq {
 +		compatible = "mmc-pwrseq-simple";
@@ -14,7 +14,7 @@
  };
  
  &codec {
-@@ -54,3 +61,41 @@
+@@ -55,3 +62,30 @@
  		"Mic",  "MBIAS";
  	status = "okay";
  };
@@ -28,7 +28,6 @@
 +	bus-width = <4>;
 +	non-removable;
 +	status = "okay";
-+
 +	brcmf: bcrmf@1 {
 +		reg = <1>;
 +		compatible = "brcm,bcm4329-fmac";
@@ -36,16 +35,6 @@
 +		interrupts = <6 10 IRQ_TYPE_LEVEL_LOW>; /* PG10 / EINT10 */
 +		interrupt-names = "host-wake";
 +	};
-+};
-+
-+&mmc2 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&mmc2_8bit_pins>;
-+	vmmc-supply = <&reg_vcc3v3>;
-+	vqmmc-supply = <&reg_vcc3v3>;
-+	bus-width = <8>;
-+	non-removable;
-+	status = "okay";
 +};
 +
 +&r_pio {

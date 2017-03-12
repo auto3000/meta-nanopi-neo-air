@@ -1,8 +1,8 @@
---- a/arch/arm/boot/dts/sun8i-h3-nanopi-neo.dts
-+++ b/arch/arm/boot/dts/sun8i-h3-nanopi-neo.dts
-@@ -46,3 +46,11 @@
- 	model = "FriendlyARM NanoPi NEO";
- 	compatible = "friendlyarm,nanopi-neo", "allwinner,sun8i-h3";
+--- a/arch/arm/boot/dts/sun8i-h3-nanopi-neo-air.dts
++++ b/arch/arm/boot/dts/sun8i-h3-nanopi-neo-air.dts
+@@ -47,3 +47,11 @@
+ 	model = "FriendlyARM NanoPi NEO Air";
+ 	compatible = "friendlyarm,nanopi-neo-air", "allwinner,sun8i-h3";
  };
 +
 +&codec {
