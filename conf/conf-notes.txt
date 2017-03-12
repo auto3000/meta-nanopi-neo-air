@@ -1,2 +1,3 @@
 Common targets are:
-    omega-image
+    omega-image-core
+    omega-image-full
