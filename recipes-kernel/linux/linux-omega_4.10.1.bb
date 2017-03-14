@@ -26,4 +26,5 @@ SRC_URI = "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${PV}.tar.xz \
     file://0002-add-nanopi-neo-air-codec.patch \
     file://0003-add-nanopi-neo-air-wifi.patch \
     file://0004-add-nanopi-neo-air-emmc.patch \
+    file://0005-add-bluetooth-uart.patch \
 	"

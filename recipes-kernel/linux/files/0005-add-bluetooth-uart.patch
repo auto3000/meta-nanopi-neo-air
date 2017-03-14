@@ -1,0 +1,96 @@
+--- a/arch/arm/boot/dts/sun8i-h3-nanopi-neo-air.dts
++++ b/arch/arm/boot/dts/sun8i-h3-nanopi-neo-air.dts
+@@ -47,12 +47,39 @@
+ 	model = "FriendlyARM NanoPi NEO Air";
+ 	compatible = "friendlyarm,nanopi-neo-air", "allwinner,sun8i-h3";
+ 
++	aliases {
++		serial3 = &uart3;
++	};
++
+ 	wifi_pwrseq: wifi_pwrseq {
+ 		compatible = "mmc-pwrseq-simple";
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&wifi_en_nanopi_neo_air>;
+ 		reset-gpios = <&r_pio 0 7 GPIO_ACTIVE_LOW>; /* PL7 */
+ 	};
++
++	rfkill-switches {
++		compatible = "simple-bus";
++		pinctrl-names = "default";
++
++		rfkill_wifi {
++			compatible = "rfkill-gpio";
++			pinctrl-names = "default";
++			pinctrl-0 = <&wifi_pwrseq>;
++			shutdown-gpio = <&r_pio 0 7 GPIO_ACTIVE_LOW>; /* PL7 */
++			label = "wifi";
++			type = <1>;
++		};
++
++		rfkill_bt {
++			compatible = "rfkill-gpio";
++			pinctrl-names = "default", "default";
++			pinctrl-0 = <&bt_pwr_pin>;
++			shutdown-gpio = <&pio 6 13 GPIO_ACTIVE_LOW>; /* PG13 */
++			label = "bt";
++			type = <2>;
++		};
++	};
+ };
+ 
+ &codec {
+@@ -99,3 +126,25 @@
+ 		allwinner,pull = <SUN4I_PINCTRL_NO_PULL>;
+ 	};
+ };
++
++&pio {
++	bt_pwr_pin: bt_pwr_pin@0 {
++		allwinner,pins = "PG13";
++		allwinner,function = "gpio_out";
++		allwinner,drive = <0>;
++		allwinner,pull = <0>;
++	};
++
++	bt_wake_pin: bt_wake_pin@0 {
++		allwinner,pins = "PA8";
++		allwinner,function = "gpio_out";
++		allwinner,drive = <0>;
++		allwinner,pull = <0>;
++	};
++};
++
++&uart3 { /* Connected to AP6212 on Neo Air */
++	pinctrl-names = "default";
++	pinctrl-0 = <&uart3_pins>, <&uart3_rts_cts_pins>;
++	status = "okay";
++};
+--- a/arch/arm/boot/dts/sun8i-h3.dtsi
++++ b/arch/arm/boot/dts/sun8i-h3.dtsi
+@@ -424,11 +424,25 @@
+ 				allwinner,pull = <SUN4I_PINCTRL_NO_PULL>;
+ 			};
+ 
++			uart2_rts_cts_pins: uart2_rts_cts {
++				allwinner,pins = "PA2", "PA3";
++				allwinner,function = "uart2";
++				allwinner,drive = <SUN4I_PINCTRL_10_MA>;
++				allwinner,pull = <SUN4I_PINCTRL_NO_PULL>;
++			};
++
+ 			uart3_pins: uart3 {
+ 				allwinner,pins = "PA13", "PA14";
+ 				allwinner,function = "uart3";
+ 				allwinner,drive = <SUN4I_PINCTRL_10_MA>;
+ 				allwinner,pull = <SUN4I_PINCTRL_NO_PULL>;
++			};
++
++			uart3_rts_cts_pins: uart3_rts_cts {
++				allwinner,pins = "PA15", "PA16";
++				allwinner,function = "uart3";
++				allwinner,drive = <SUN4I_PINCTRL_10_MA>;
++				allwinner,pull = <SUN4I_PINCTRL_NO_PULL>;
+ 			};
+ 		};
+ 
