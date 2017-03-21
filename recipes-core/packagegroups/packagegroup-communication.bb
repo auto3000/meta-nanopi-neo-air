@@ -12,4 +12,7 @@ RDEPENDS_${PN} = "\
     wpa-supplicant-passphrase \
     dhcpcd \
     hostapd \
+    bluez5 \
+    packagegroup-tools-bluetooth \
+    brcm-patchram-plus \
 "
