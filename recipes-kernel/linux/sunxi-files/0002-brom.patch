@@ -1,0 +1,54 @@
+--- a/arch/arm/mach-sunxi/power/brom/Makefile
++++ b/arch/arm/mach-sunxi/power/brom/Makefile
+@@ -24,21 +24,21 @@ resumes-y :=   resumes.o        \
+ 
+ resumes-y := $(addprefix $(obj)/,$(resumes-y))
+ 
+-$(obj)/resumes.code: $(obj)/resumes.bin
+-	$(Q)$(obj)/gen_check_code $(obj)/resumes.bin $(obj)/resumes.code
++$(obj)/resumes.code: $(src)/gen_check_code $(obj)/resumes.bin
++	$(Q)$< $(obj)/resumes.bin $(obj)/resumes.code
+ 
+ $(obj)/resumes.bin: $(obj)/resumes.elf FORCE
+ 	$(Q)$(CROSS_COMPILE)objcopy -O binary $(obj)/resumes.elf $(obj)/resumes.bin
+ 
+ ifneq ($(strip $(CONFIG_ARCH_SUN9I)),)
+-$(obj)/resumes.elf: $(obj)/sun9i_brom_scatter.scat $(resumes-y)
+-	$(Q)$(CROSS_COMPILE)ld -T $(obj)/sun9i_brom_scatter.scat  -EL  $(resumes-y) -o $(obj)/resumes.elf  -Map $(obj)/resumes.map
++$(obj)/resumes.elf: $(src)/sun9i_brom_scatter.scat $(resumes-y)
++	$(Q)$(CROSS_COMPILE)ld -T $<  -EL  $(resumes-y) -o $(obj)/resumes.elf  -Map $(obj)/resumes.map
+ 	$(Q)$(CROSS_COMPILE)objdump -D $(obj)/resumes.elf > $(obj)/resumes.lst
+ endif
+ 
+ ifneq ($(strip $(CONFIG_ARCH_SUN8I)),)
+-$(obj)/resumes.elf: $(obj)/sun8i_brom_scatter.scat $(resumes-y)
+-	$(Q)$(CROSS_COMPILE)ld -T $(obj)/sun8i_brom_scatter.scat  -EL  $(resumes-y) -o $(obj)/resumes.elf  -Map $(obj)/resumes.map
++$(obj)/resumes.elf: $(src)/sun8i_brom_scatter.scat $(resumes-y)
++	$(Q)$(CROSS_COMPILE)ld -T $<  -EL  $(resumes-y) -o $(obj)/resumes.elf  -Map $(obj)/resumes.map
+ 	$(Q)$(CROSS_COMPILE)objdump -D $(obj)/resumes.elf > $(obj)/resumes.lst
+ endif
+ 
+--- a/drivers/arisc/binary/Makefile
++++ b/drivers/arisc/binary/Makefile
+@@ -29,8 +29,8 @@ ifdef CONFIG_ARCH_SUN9IW1P1
+ PLATFORM=arisc_sun9iw1p1
+ endif
+ 
+-$(obj)/$(PLATFORM).bin : $(obj)/$(PLATFORM).code
+-	cp $(obj)/$(PLATFORM).code $(obj)/$(PLATFORM).tar.bz2; \
++$(obj)/$(PLATFORM).bin : $(src)/$(PLATFORM).code
++	cp $< $(obj)/$(PLATFORM).tar.bz2; \
+ 	tar -xjvf $(obj)/$(PLATFORM).tar.bz2 -C $(obj)/; \
+ 	cp $(obj)/arisc_package/$(PLATFORM).bin $(obj)/$(PLATFORM).bin; \
+ 	cp $(obj)/arisc_package/$(PLATFORM).tar.bz2.aes $(obj)/arisc; \
+--- a/arch/arm/mm/dma-mapping.c
++++ b/arch/arm/mm/dma-mapping.c
+@@ -576,7 +576,7 @@ static void __free_from_contiguous(struc
+ 	dma_release_from_contiguous(dev, page, size >> PAGE_SHIFT);
+ }
+ 
+-inline pgprot_t __get_dma_pgprot(struct dma_attrs *attrs, pgprot_t prot)
++pgprot_t __get_dma_pgprot(struct dma_attrs *attrs, pgprot_t prot)
+ {
+ 	prot = dma_get_attr(DMA_ATTR_WRITE_COMBINE, attrs) ?
+ 			    pgprot_writecombine(prot) :
