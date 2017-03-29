@@ -8,6 +8,9 @@ SRC_URI = "git://github.com/lcrb/h3_lichee.git;branch=master;protocol=git \
     file://0001-gcc-version.patch \
     file://0001-compiler-gcc-integrate-the-various-compiler-gcc-345-.patch \
     file://0002-brom.patch \
+    file://0001-add-bcmdhd.patch \
+    file://0002-enable-bcmdhd.patch \
+    file://0003-fix-bcmdhd.patch \
     file://0001-fix_cfg80211.patch \
     file://defconfig \
     "

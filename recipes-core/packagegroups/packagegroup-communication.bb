@@ -4,7 +4,6 @@ LICENSE = "MIT"
 inherit packagegroup
 
 RDEPENDS_${PN} = "\
-    linux-firmware \
     iw \
     wireless-tools \ 
     wpa-supplicant \

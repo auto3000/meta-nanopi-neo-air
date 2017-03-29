@@ -236,3 +236,5 @@ CONF_VERSION = "1"
 
 DISTRO_FEATURES += " wifi"
 DISTRO_FEATURES += " bluetooth"
+
+PREFERRED_PROVIDER_virtual/kernel="linux-sunxi"
