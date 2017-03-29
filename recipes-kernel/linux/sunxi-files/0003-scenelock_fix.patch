@@ -1,0 +1,13 @@
+--- a/kernel/power/scenelock_data.h
++++ b/kernel/power/scenelock_data.h
+@@ -4,6 +4,10 @@
+ 
+ #include <linux/power/axp_depend.h>
+ 
++#ifndef CONFIG_ARCH_SUN8IW7P1
++#error "This isn't working"
++#endif
++
+ #if defined CONFIG_ARCH_SUN8IW1P1
+ scene_extended_standby_t extended_standby[8] = {
+ 	{
