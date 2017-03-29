@@ -15,3 +15,5 @@ SRC_URI = "git://github.com/lcrb/h3_lichee.git;branch=master;protocol=git \
     file://0001-fix_cfg80211.patch \
     file://defconfig \
     "
+
+KERNEL_MODULE_AUTOLOAD += "bcmdhd"
