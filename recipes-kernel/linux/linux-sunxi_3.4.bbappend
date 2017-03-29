@@ -11,6 +11,7 @@ SRC_URI = "git://github.com/lcrb/h3_lichee.git;branch=master;protocol=git \
     file://0001-add-bcmdhd.patch \
     file://0002-enable-bcmdhd.patch \
     file://0003-fix-bcmdhd.patch \
+    file://0004-enable-bcmdhd-gpio.patch \
     file://0001-fix_cfg80211.patch \
     file://defconfig \
     "
