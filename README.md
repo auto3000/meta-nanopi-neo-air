@@ -1,11 +1,11 @@
-# meta-omage - Meta Layer for Nanopi Neo AIr
+# meta-nanopi-neo-air - Meta Layer for Nanopi Neo AIr
 
 For use with
 
 - poky morty
 - meta-openembedded morty
-- meta-sunxi morty
-- Linux 4.10.1
+- meta-sunxi master 
+- Linux 4.11.2
 
 WiFi Tested
 Audio Untested
