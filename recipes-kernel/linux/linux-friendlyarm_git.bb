@@ -21,6 +21,7 @@ SRCREV = "5fd7aa916e6c93df69f184b03e37cca0284f9550"
 
 SRC_URI = "git://github.com/friendlyarm/linux.git;protocol=https;branch=sunxi-4.11.y \
         file://defconfig \
+	file://0001-sun4i-codec-enable-audio-on-nanopi-neo-air.patch \
         "
 S = "${WORKDIR}/git"
 
