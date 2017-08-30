@@ -5,10 +5,12 @@ For use with
 - poky morty
 - meta-openembedded morty
 - meta-sunxi master 
-- Linux 4.11.2
+- Linux 4.11.2 (based on FriendlyArm Linux release)
 
-WiFi Tested
-Audio Untested
+Current status:
+1. WiFi Test OK
+2. Audio codec Test OK
+3. Bluetooth Untested
 
 ## Bluetooth Init
 
