@@ -12,7 +12,7 @@ Current status:
 2. Audio codec Test OK
 3. Bluetooth Untested
 
-## Bluetooth Init
+## Bluetooth init
 
 ```bash
 /etc/init.d/bluetooth start
@@ -44,3 +44,11 @@ sleep 1
 hciattach /dev/ttyS3 any
 hciconfig hci0 up
 ```
+
+## Audio codec init
+
+Capture on Mic1 can be started with:
+```bash
+amixer set Mic1 cap
+```
+
