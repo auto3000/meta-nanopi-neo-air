@@ -12,6 +12,13 @@ Current status:
 2. Audio codec Test OK
 3. Bluetooth Untested
 
+## Flashing NanoPi image on SD card
+At some moments, you definitely need to push your piece of software on your Pi:
+```bash
+bitbake core-image-minimal # or whatever image you built
+sudo dd if=tmp/deploy/images/nanopi-neo-air/core-image-minimal.sunxi-sdimg of=/dev/sdXXX # XXX is your SD device
+```
+
 ## Bluetooth init
 
 ```bash
@@ -51,4 +58,8 @@ Capture on Mic1 can be started with:
 ```bash
 amixer set Mic1 cap
 ```
+
+## Wifi init
+
+It works without user intervention, except I observed some init failure when power is coming from the weakly/non-powered USB plug on my laptop.
 
