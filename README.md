@@ -1,16 +1,30 @@
 # meta-nanopi-neo-air - Meta Layer for Nanopi Neo AIr
 
-For use with
+This README file contains information on building the meta-nanopi-neo-air BSP layer.
+Please see the corresponding sections below for details.
 
-- poky morty
-- meta-openembedded morty
-- meta-sunxi master 
-- Linux 4.11.2 (based on FriendlyArm Linux release)
+This layer provides:
+- Linux 4.11.2 based on FriendlyArm Linux release
+- U-Boot 2017.05 based on FriendlyArm U-Boot release
 
 Current status:
 1. WiFi Test OK
 2. Audio codec Test OK
 3. Bluetooth Untested
+
+## Dependencies
+
+This layer depends on:
+
+  URI: git://git.yoctoproject.org/poky
+  branch: morty
+ 
+  URI: git://git.openembedded.org/meta-openembedded
+  branch: morty
+
+  URI: git://github.com/linux-sunxi/meta-sunxi
+  branch: master
+
 
 ## Flashing NanoPi image on SD card
 At some moments, you definitely need to push your piece of software on your Pi:
