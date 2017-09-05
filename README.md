@@ -26,11 +26,22 @@ This layer depends on:
   branch: master
 
 
-## Flashing NanoPi image on SD card
+## Flashing NanoPi image on external SD card
 At some moments, you definitely need to push your piece of software on your Pi:
 ```bash
 bitbake core-image-minimal # or whatever image you built
 sudo dd if=tmp/deploy/images/nanopi-neo-air/core-image-minimal.sunxi-sdimg of=/dev/sdXXX # XXX is your SD device
+```
+
+## Flashing NanoPi image on internal eMMC
+The generated image is compatible with both SD card and eMMC.
+
+You had to first boot your device on SD card, then flash the internal eMMC by command line with 'dd'.
+
+You can copy the image on SD card filesystem first, but my preference is to make a direct eMMC copy through the WiFI of the board:
+```bash
+bitbake core-image-minimal # or whatever image you built
+sudo dd if=tmp/deploy/images/nanopi-neo-air/core-image-minimal.sunxi-sdimg | ssh root@<nanopi-ip-address> dd of=/dev/mmcblk3 # <nanopi-ip-address> is your NanoPi IP address
 ```
 
 ## Bluetooth init
