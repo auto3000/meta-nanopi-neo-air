@@ -16,6 +16,7 @@ SPL_BINARY="u-boot-sunxi-with-spl.bin"
 
 SRC_URI = " \
         git://github.com/friendlyarm/u-boot.git;protocol=https;branch=sunxi-v2017.x \
+	file://0001-Fix-for-eMMC-on-NanoPI-NEO-Air.patch \
         file://boot.cmd \
 	"
 

@@ -1,0 +1,24 @@
+From e5cd71b798cb41dd168d51f20e31e7bf7221c3c8 Mon Sep 17 00:00:00 2001
+From: Erki Aring <erki.aring@liewenthal.ee>
+Date: Thu, 1 Jun 2017 10:35:38 +0300
+Subject: [PATCH] Fix for eMMC on NanoPI NEO Air
+
+---
+ configs/nanopi_neo_air_defconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configs/nanopi_neo_air_defconfig b/configs/nanopi_neo_air_defconfig
+index 70ce1cf..46f306f 100644
+--- a/configs/nanopi_neo_air_defconfig
++++ b/configs/nanopi_neo_air_defconfig
+@@ -5,6 +5,7 @@ CONFIG_MACH_SUN8I_H3_NANOPI=y
+ CONFIG_DRAM_CLK=408
+ CONFIG_DRAM_ZQ=3881979
+ CONFIG_DRAM_ODT_EN=y
++CONFIG_MMC_SUNXI_SLOT_EXTRA=2
+ CONFIG_DEFAULT_DEVICE_TREE="sun8i-h3-nanopi-neo-air"
+ # CONFIG_SYS_MALLOC_CLEAR_ON_INIT is not set
+ CONFIG_CONSOLE_MUX=y
+-- 
+2.7.4
+
