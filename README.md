@@ -10,7 +10,7 @@ This layer provides:
 Current status:
 1. WiFi Test OK
 2. Audio codec Test OK
-3. Bluetooth Untested
+3. Bluetooth Untested (volunteers requested)
 
 ## Dependencies
 
@@ -46,6 +46,8 @@ sudo dd if=tmp/deploy/images/nanopi-neo-air/core-image-minimal.sunxi-sdimg | ssh
 
 ## Bluetooth init
 
+This section is untested. I doubt these commands are really needed now.
+
 ```bash
 /etc/init.d/bluetooth start
 
@@ -79,7 +81,7 @@ hciconfig hci0 up
 
 ## Audio codec init
 
-Capture on Mic1 can be started with:
+Playback is working with no specific configuration, but capture on Mic1 must be setup first with:
 ```bash
 amixer set Mic1 cap
 ```
